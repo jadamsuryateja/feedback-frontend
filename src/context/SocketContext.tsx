@@ -16,7 +16,18 @@ export const SocketProvider = ({ children }: { children: ReactNode }) => {
     autoConnect: false,
     withCredentials: true,
     transports: ['websocket', 'polling'],
-    path: '/socket.io'
+    timeout: 10000,
+    reconnection: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000
+  });
+
+  socket.on('connect_error', (error) => {
+    console.error('Socket connection error:', error);
+  });
+
+  socket.on('error', (error) => {
+    console.error('Socket error:', error);
   });
 
   useEffect(() => {

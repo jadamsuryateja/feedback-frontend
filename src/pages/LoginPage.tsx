@@ -20,15 +20,10 @@ const LoginPage = () => {
     try {
       console.log('Submitting login with:', {
         username,
-        role,
-        passwordLength: password.length
+        role
       });
 
-      if (password.length < 8) {
-        setError('Password must be at least 8 characters');
-        return;
-      }
-
+      // No client-side password validation enforced here — forward credentials to the API
       await login(username, password, role);
     } catch (err: any) {
       console.error('Login error:', err);

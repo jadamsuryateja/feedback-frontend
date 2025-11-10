@@ -10,7 +10,6 @@ const handleResponse = async (response: Response) => {
   const data = await response.json();
   
   if (!response.ok) {
-    // Enhanced error handling
     console.error('API Error:', {
       status: response.status,
       statusText: response.statusText,
@@ -27,6 +26,11 @@ export const api = {
   auth: {
     login: async (credentials: { username: string; password: string; role: string }) => {
       try {
+        // Validate credentials before sending
+        if (!credentials.username || !credentials.password || !credentials.role) {
+          throw new Error('Missing required credentials');
+        }
+
         console.log('Login attempt:', { 
           username: credentials.username, 
           role: credentials.role,
@@ -41,6 +45,11 @@ export const api = {
           body: JSON.stringify(credentials),
           credentials: 'include'
         });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Login failed');
+        }
 
         return handleResponse(response);
       } catch (error) {

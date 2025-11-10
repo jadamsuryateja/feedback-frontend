@@ -36,9 +36,26 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = async (username: string, password: string, role: string) => {
-    const data = await api.auth.login(username, password, role);
-    localStorage.setItem('token', data.token);
-    setUser(data.user);
+    try {
+      // Validate inputs
+      if (!username || !password || !role) {
+        throw new Error('Missing required credentials');
+      }
+
+      const data = await api.auth.login({ username, password, role });
+
+      if (!data || !data.token) {
+        throw new Error('Invalid response from server');
+      }
+
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
+
+      return data;
+    } catch (error) {
+      console.error('Login error in AuthContext:', error);
+      throw error;
+    }
   };
 
   const logout = () => {

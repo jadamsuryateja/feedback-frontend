@@ -18,9 +18,16 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
+      // Validate inputs
+      if (!username || !password || !role) {
+        setError('Please fill in all fields');
+        return;
+      }
+
       await login(username, password, role);
-    } catch (err) {
-      setError('Invalid credentials. Please try again.');
+    } catch (err: any) {
+      console.error('Login error:', err);
+      setError(err.message || 'Invalid credentials. Please try again.');
     } finally {
       setLoading(false);
     }

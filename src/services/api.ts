@@ -8,15 +8,21 @@ const getToken = () => localStorage.getItem('token');
 export const api = {
   auth: {
     login: async (credentials: { username: string; password: string; role: string }) => {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
-      return handleResponse(response);
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(credentials),
+        });
+        
+        return handleResponse(response);
+      } catch (error) {
+        console.error('Login error:', error);
+        throw error;
+      }
     },
 
     verify: async () => {
@@ -162,9 +168,18 @@ const handleSubmit = async (config: Config) => {
   }
 };
 
-const handleResponse = (response: Response) => {
+const handleResponse = async (response: Response) => {
+  const data = await response.json();
+  
   if (!response.ok) {
-    throw new Error(response.statusText);
+    console.error('API Error:', {
+      status: response.status,
+      statusText: response.statusText,
+      data
+    });
+    
+    throw new Error(data.error || data.message || 'Server error');
   }
-  return response.json();
+  
+  return data;
 };

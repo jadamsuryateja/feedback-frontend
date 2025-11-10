@@ -1,7 +1,8 @@
 import { Config } from '../types';
 
 const API_URL = import.meta.env.VITE_API_URL;
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
+// Remove SOCKET_URL if not used
+// const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
 
 const getToken = () => localStorage.getItem('token');
 
@@ -158,15 +159,8 @@ export const api = {
   }
 };
 
-// Example usage in components
-const handleSubmit = async (config: Config) => {
-  try {
-    await api.config.create(config);
-    // Handle success
-  } catch (error) {
-    // Handle error
-  }
-};
+// Remove or export handleSubmit if needed
+// const handleSubmit = async (config: Config) => {...};
 
 const handleResponse = async (response: Response) => {
   const data = await response.json();

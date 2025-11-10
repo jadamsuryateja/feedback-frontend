@@ -106,10 +106,12 @@ const AdminDashboard = () => {
       animate="animate"
       exit="exit"
       variants={pageTransition}
+      transition={{ duration: 0.3 }}
     >
       <motion.nav 
         className="bg-slate-800 border-b border-slate-700"
         variants={fadeInUp}
+        transition={{ duration: 0.3 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center h-auto sm:h-16 py-4 sm:py-0">

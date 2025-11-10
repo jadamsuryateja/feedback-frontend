@@ -1,39 +1,19 @@
 {
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
   "env": {
     "VITE_API_URL": "https://feedback-server-czv8.onrender.com/api",
     "VITE_SOCKET_URL": "https://feedback-server-czv8.onrender.com",
     "VITE_APP_PORT": "443",
     "VITE_APP_HOST": "0.0.0.0"
-  },
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Credentials", "value": "true" },
-        { "key": "Access-Control-Allow-Origin", "value": "https://feedback-frontend-rdop.vercel.app" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" }
-      ]
-    }
-  ],
-  "images": {
-    "sizes": [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    "domains": ["localhost"],
-    "formats": ["image/avif", "image/webp"],
-    "minimumCacheTTL": 60
-  },
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/.*",
-      "dest": "/index.html"
-    }
-  ]
+  }
 }

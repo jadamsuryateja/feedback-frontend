@@ -24,10 +24,17 @@ const LoginPage = () => {
         passwordLength: password.length
       });
 
+      if (password.length < 8) {
+        setError('Password must be at least 8 characters');
+        return;
+      }
+
       await login(username, password, role);
     } catch (err: any) {
       console.error('Login error:', err);
-      setError(err.message || 'Invalid credentials. Please try again.');
+      setError(err.message === 'Invalid credentials' 
+        ? 'Invalid username or password' 
+        : 'An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }

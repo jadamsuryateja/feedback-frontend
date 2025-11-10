@@ -10,11 +10,13 @@ const SocketContext = createContext<SocketContextType>({ socket: null });
 
 export const SocketProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();
-  const socket = io(import.meta.env.VITE_SOCKET_URL, {
-    reconnectionDelay: 1000,
-    reconnectionDelayMax: 5000,
-    reconnectionAttempts: 5,
-    withCredentials: true
+  const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
+
+  const socket = io(SOCKET_URL, {
+    autoConnect: false,
+    withCredentials: true,
+    transports: ['websocket', 'polling'],
+    path: '/socket.io'
   });
 
   useEffect(() => {

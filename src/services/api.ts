@@ -6,19 +6,42 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const getToken = () => localStorage.getItem('token');
 
+const handleResponse = async (response: Response) => {
+  const data = await response.json();
+  
+  if (!response.ok) {
+    // Enhanced error handling
+    console.error('API Error:', {
+      status: response.status,
+      statusText: response.statusText,
+      data
+    });
+    
+    throw new Error(data.error || data.message || 'An error occurred');
+  }
+  
+  return data;
+};
+
 export const api = {
   auth: {
     login: async (credentials: { username: string; password: string; role: string }) => {
       try {
+        console.log('Login attempt:', { 
+          username: credentials.username, 
+          role: credentials.role,
+          apiUrl: import.meta.env.VITE_API_URL 
+        });
+
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
           method: 'POST',
-          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(credentials),
+          credentials: 'include'
         });
-        
+
         return handleResponse(response);
       } catch (error) {
         console.error('Login error:', error);
@@ -161,19 +184,3 @@ export const api = {
 
 // Remove or export handleSubmit if needed
 // const handleSubmit = async (config: Config) => {...};
-
-const handleResponse = async (response: Response) => {
-  const data = await response.json();
-  
-  if (!response.ok) {
-    console.error('API Error:', {
-      status: response.status,
-      statusText: response.statusText,
-      data
-    });
-    
-    throw new Error(data.error || data.message || 'Server error');
-  }
-  
-  return data;
-};

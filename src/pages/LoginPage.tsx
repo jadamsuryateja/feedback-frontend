@@ -18,11 +18,11 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      // Validate inputs
-      if (!username || !password || !role) {
-        setError('Please fill in all fields');
-        return;
-      }
+      console.log('Submitting login with:', {
+        username,
+        role,
+        passwordLength: password.length
+      });
 
       await login(username, password, role);
     } catch (err: any) {

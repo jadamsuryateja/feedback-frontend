@@ -1,0 +1,16 @@
+{
+  "images": {
+    "domains": ["localhost"],
+    "formats": ["image/avif", "image/webp"],
+    "minimumCacheTTL": 60
+  },
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
+  ]
+}

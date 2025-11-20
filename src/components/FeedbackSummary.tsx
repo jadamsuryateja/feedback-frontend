@@ -116,137 +116,151 @@ const FeedbackSummary = () => {
         visibility: visible;
         color: black !important;
         background: white !important;
-        border-color: #e5e7eb !important;
+        border-color: #000 !important;
       }
       .print-section {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
-        padding: 0.5cm !important;
+        padding: 0.3cm !important;
       }
       
       /* Increase font sizes for better readability */
       .print-section h2 {
-        font-size: 18px !important;
-        margin-bottom: 10px !important;
+        font-size: 16px !important;
+        margin-bottom: 8px !important;
+        margin-top: 0 !important;
         font-weight: bold !important;
+        line-height: 1.2 !important;
       }
       
       .print-section h3 {
-        font-size: 14px !important;
-        margin-top: 10px !important;
-        margin-bottom: 8px !important;
+        font-size: 12px !important;
+        margin-top: 8px !important;
+        margin-bottom: 6px !important;
         font-weight: bold !important;
+        line-height: 1.2 !important;
       }
       
       .print-section .text-sm {
-        font-size: 11px !important;
+        font-size: 10px !important;
       }
       
       .print-section span,
       .print-section td,
       .print-section th {
-        font-size: 10px !important;
-        padding: 6px 8px !important;
-        line-height: 1.4 !important;
+        font-size: 9px !important;
+        padding: 4px 6px !important;
+        line-height: 1.3 !important;
       }
       
       /* Info section grid */
       .print-section .grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 8px !important;
-        margin-bottom: 10px !important;
+        gap: 4px !important;
+        margin-bottom: 8px !important;
       }
       
       /* Table improvements */
       .print-section table {
-        font-size: 10px !important;
-        border: 2px solid #000 !important;
+        font-size: 9px !important;
+        border: 1px solid #000 !important;
         width: 100% !important;
         table-layout: fixed !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 10px !important;
+        border-collapse: collapse !important;
       }
       
       .print-section th,
       .print-section td {
         border: 1px solid #000 !important;
-        padding: 8px !important;
+        padding: 4px 5px !important;
         text-align: left !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
+        line-height: 1.3 !important;
+        vertical-align: top !important;
       }
       
       .print-section th {
-        background-color: #f3f4f6 !important;
+        background-color: #e5e7eb !important;
         font-weight: bold !important;
+        text-align: center !important;
+        color: black !important;
       }
       
       /* Section spacing */
       .print-section > div {
-        margin-bottom: 1cm !important;
-        padding: 8px !important;
+        margin-bottom: 0.8cm !important;
+        padding: 4px !important;
+        page-break-inside: avoid !important;
       }
       
       /* Badges */
       .print-section [class*='rounded-full'] {
-        padding: 3px 8px !important;
-        font-size: 9px !important;
+        padding: 2px 6px !important;
+        font-size: 8px !important;
         border: 1px solid #000 !important;
+        white-space: nowrap !important;
       }
       
       /* Portrait page setup */
       @page {
-        margin: 0.5cm !important;
+        margin: 0.3cm !important;
         size: A4 portrait;
       }
       
       /* Spacing utilities */
       .print-section .mb-6 {
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.3rem !important;
       }
       
       .print-section .p-6 {
-        padding: 0.5rem !important;
+        padding: 0.3rem !important;
       }
       
       .print-section .gap-4 {
-        gap: 0.3rem !important;
+        gap: 0.2rem !important;
       }
       
-      /* Column widths */
-      .print-section th:first-child,
-      .print-section td:first-child {
-        width: 70px !important;
+      /* Column widths for questions table */
+      .print-section table thead tr th:first-child,
+      .print-section table tbody tr td:first-child {
+        width: 60px !important;
+        min-width: 60px !important;
       }
       
-      .print-section th:not(:first-child),
-      .print-section td:not(:first-child) {
-        width: calc((100% - 70px) / 11) !important;
+      .print-section table thead tr th:not(:first-child),
+      .print-section table tbody tr td:not(:first-child) {
+        width: 8% !important;
+        min-width: 8% !important;
+        text-align: center !important;
       }
 
       /* Logo and header styles */
       .print-header {
         display: block !important;
         text-align: center;
-        margin-bottom: 0.5cm !important;
+        margin-bottom: 0.4cm !important;
         visibility: visible !important;
         page-break-inside: avoid !important;
       }
       
       .print-header img {
-        height: 80px !important;
+        height: 60px !important;
         margin: 0 auto !important;
       }
       
       .print-header h1 {
-        font-size: 16px !important;
+        font-size: 13px !important;
         font-weight: bold !important;
         color: black !important;
-        margin-top: 6px !important;
+        margin-top: 4px !important;
         margin-bottom: 2px !important;
         text-align: center !important;
+        line-height: 1.2 !important;
       }
 
       /* Long text handling */
@@ -259,24 +273,26 @@ const FeedbackSummary = () => {
       .print-section .break-words {
         word-break: break-word !important;
         white-space: normal !important;
-        font-size: 10px !important;
-        line-height: 1.5 !important;
+        font-size: 9px !important;
+        line-height: 1.4 !important;
       }
 
       /* Comments section */
       .comments-section {
         page-break-before: auto !important;
         page-break-inside: avoid !important;
-        margin-top: 1.5cm !important;
+        margin-top: 1cm !important;
+        margin-bottom: 0.5cm !important;
         width: 100% !important;
       }
 
       .comments-section h3 {
-        font-size: 14px !important;
+        font-size: 12px !important;
         font-weight: bold !important;
-        margin-bottom: 0.8cm !important;
+        margin-bottom: 0.6cm !important;
         color: black !important;
         text-align: center !important;
+        line-height: 1.2 !important;
       }
 
       .comments-section table {
@@ -284,27 +300,28 @@ const FeedbackSummary = () => {
         border-collapse: collapse !important;
         table-layout: fixed !important;
         page-break-inside: auto !important;
-        border: 2px solid #000 !important;
-        margin-bottom: 1cm !important;
+        border: 1px solid #000 !important;
+        margin-bottom: 0.8cm !important;
       }
 
       .comments-section th,
       .comments-section td {
         width: 50% !important;
-        padding: 10px !important;
+        padding: 6px 5px !important;
         vertical-align: top !important;
         border: 1px solid #000 !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
         white-space: normal !important;
-        font-size: 10px !important;
-        line-height: 1.5 !important;
+        font-size: 9px !important;
+        line-height: 1.4 !important;
       }
       
       .comments-section th {
-        background-color: #f3f4f6 !important;
+        background-color: #e5e7eb !important;
         font-weight: bold !important;
         text-align: center !important;
+        color: black !important;
       }
 
       .comments-section td > div.break-words {
@@ -318,8 +335,8 @@ const FeedbackSummary = () => {
       }
 
       .comments-section .text-xs {
-        font-size: 9px !important;
-        margin-top: 4px !important;
+        font-size: 8px !important;
+        margin-top: 2px !important;
         color: #000 !important;
       }
 
@@ -336,7 +353,8 @@ const FeedbackSummary = () => {
       .signature-section {
         display: block !important;
         visibility: visible !important;
-        margin-top: 2cm !important;
+        margin-top: 1.2cm !important;
+        margin-bottom: 0 !important;
         text-align: right !important;
         page-break-inside: avoid !important;
         background: transparent !important;
@@ -344,20 +362,42 @@ const FeedbackSummary = () => {
       }
 
       .signature-section img {
-        height: 50px !important;
+        height: 40px !important;
         width: auto !important;
         display: block !important;
         margin-left: auto !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 3px !important;
       }
 
       .signature-text {
-        font-size: 11px !important;
+        font-size: 10px !important;
         font-weight: bold !important;
         color: black !important;
         text-align: center !important;
-        width: 150px !important;
+        width: 130px !important;
         margin-left: auto !important;
+        line-height: 1.2 !important;
+      }
+
+      /* Fix for info table rows */
+      .print-section table tbody tr {
+        page-break-inside: avoid !important;
+      }
+
+      /* Hide scrollbars in print */
+      .overflow-x-auto {
+        overflow: visible !important;
+      }
+
+      /* Ensure text doesn't overlap */
+      .print-section * {
+        display: block !important;
+        clear: both !important;
+      }
+
+      .print-section table * {
+        display: table-cell !important;
+        clear: none !important;
       }
     }
   `;

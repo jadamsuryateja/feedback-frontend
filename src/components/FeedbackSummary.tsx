@@ -176,6 +176,8 @@ const FeedbackSummary = () => {
         text-align: left !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
+        white-space: normal !important;
+        vertical-align: top !important;
       }
       
       .print-section th {
@@ -646,46 +648,46 @@ const FeedbackSummary = () => {
             <div className="overflow-x-auto mb-4">
               <table className="w-full border-collapse border border-slate-700">
                 <tbody>
-                  {/* First row */}
+                  {/* First row - split into 2 rows for better spacing */}
                   <tr>
-                    <td className="border border-slate-600 px-4 py-2">
-                      <span className="text-slate-400">Academic Year:</span>{" "}
-                      <span className="text-white">{academicYear}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm">
+                      <span className="text-slate-400 block text-xs">Academic Year:</span>
+                      <span className="text-white font-semibold">{academicYear}</span>
                     </td>
-                    <td className="border border-slate-600 px-4 py-2">
-                      <span className="text-slate-400">Year:</span>{" "}
-                      <span className="text-white">{year}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm">
+                      <span className="text-slate-400 block text-xs">Year:</span>
+                      <span className="text-white font-semibold">{year}</span>
                     </td>
-                    <td className="border border-slate-600 px-4 py-2">
-                      <span className="text-slate-400">Semester:</span>{" "}
-                      <span className="text-white">{semester}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm">
+                      <span className="text-slate-400 block text-xs">Semester:</span>
+                      <span className="text-white font-semibold">{semester}</span>
                     </td>
-                    <td className="border border-slate-600 px-4 py-2">
-                      <span className="text-slate-400">Branch:</span>{" "}
-                      <span className="text-white truncate">{isBSH ? bshBranch : branch}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm">
+                      <span className="text-slate-400 block text-xs">Branch:</span>
+                      <span className="text-white font-semibold truncate">{isBSH ? bshBranch : branch}</span>
                     </td>
-                    <td className="border border-slate-600 px-4 py-2">
-                      <span className="text-slate-400">Section:</span>{" "}
-                      <span className="text-white">{section}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm">
+                      <span className="text-slate-400 block text-xs">Section:</span>
+                      <span className="text-white font-semibold">{section}</span>
                     </td>
-                    <td className="border border-slate-600 px-4 py-2">
-                      <span className="text-slate-400">Total Responses:</span>{" "}
-                      <span className="text-white">{item.totalResponses}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm">
+                      <span className="text-slate-400 block text-xs">Responses:</span>
+                      <span className="text-white font-semibold">{item.totalResponses}</span>
                     </td>
                   </tr>
                   {/* Second row */}
                   <tr>
-                    <td className="border border-slate-600 px-4 py-2" colSpan={3}>
-                      <span className="text-slate-400">Subject:</span>{" "}
-                      <span className="text-white truncate">{item.subjectName}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm" colSpan={3}>
+                      <span className="text-slate-400 block text-xs">Subject:</span>
+                      <span className="text-white font-semibold line-clamp-2">{item.subjectName}</span>
                     </td>
-                    <td className="border border-slate-600 px-4 py-2" colSpan={2}>
-                      <span className="text-slate-400">Teacher:</span>{" "}
-                      <span className="text-white truncate">{item.teacherName}</span>
+                    <td className="border border-slate-600 px-3 py-2 text-sm" colSpan={2}>
+                      <span className="text-slate-400 block text-xs">Teacher:</span>
+                      <span className="text-white font-semibold line-clamp-2">{item.teacherName}</span>
                     </td>
-                    <td className="border border-slate-600 px-4 py-2">
-                      <span className="text-slate-400">Type:</span>{" "}
-                      <span className={`px-2 py-0.5 rounded-full text-xs ${
+                    <td className="border border-slate-600 px-3 py-2 text-sm">
+                      <span className="text-slate-400 block text-xs">Type:</span>
+                      <span className={`px-2 py-0.5 rounded-full text-xs font-semibold inline-block ${
                         item.type === 'Theory' 
                           ? 'bg-blue-900/50 text-white border border-blue-800' 
                           : 'bg-green-900/50 text-white border border-green-800'

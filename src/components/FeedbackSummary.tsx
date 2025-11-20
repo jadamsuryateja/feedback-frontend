@@ -162,17 +162,46 @@ const FeedbackSummary = () => {
       
       /* Table improvements */
       .print-section table {
-        font-size: 10px !important;
+        font-size: 9px !important;
         border: 2px solid #000 !important;
         width: 100% !important;
         table-layout: fixed !important;
         margin-bottom: 12px !important;
       }
       
+      .print-section tbody tr:first-child td {
+        width: auto !important;
+        min-width: 0 !important;
+      }
+      
+      .print-section tbody tr:first-child td:nth-child(1) {
+        width: 20% !important;
+      }
+      
+      .print-section tbody tr:first-child td:nth-child(2) {
+        width: 10% !important;
+      }
+      
+      .print-section tbody tr:first-child td:nth-child(3) {
+        width: 15% !important;
+      }
+      
+      .print-section tbody tr:first-child td:nth-child(4) {
+        width: 15% !important;
+      }
+      
+      .print-section tbody tr:first-child td:nth-child(5) {
+        width: 12% !important;
+      }
+      
+      .print-section tbody tr:first-child td:nth-child(6) {
+        width: 18% !important;
+      }
+      
       .print-section th,
       .print-section td {
         border: 1px solid #000 !important;
-        padding: 8px !important;
+        padding: 6px 4px !important;
         text-align: left !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
@@ -646,47 +675,47 @@ const FeedbackSummary = () => {
         {summary.map((item, index) => (
           <div key={index} className="bg-slate-800 rounded-xl shadow-md p-6 mb-6 border border-slate-700">
             <div className="overflow-x-auto mb-4">
-              <table className="w-full border-collapse border border-slate-700">
+              <table className="w-full border-collapse border border-slate-700" style={{ tableLayout: 'fixed' }}>
                 <tbody>
-                  {/* First row - split into 2 rows for better spacing */}
+                  {/* First row */}
                   <tr>
-                    <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Batch:</span>
-                      <span className="text-white font-semibold">{academicYear}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" style={{ width: '20%', minWidth: '80px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Batch</span>
+                      <span className="text-white font-semibold text-xs break-words">{academicYear}</span>
                     </td>
-                    <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Year:</span>
-                      <span className="text-white font-semibold">{year}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" style={{ width: '10%', minWidth: '50px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Year</span>
+                      <span className="text-white font-semibold text-xs">{year}</span>
                     </td>
-                    <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Semester:</span>
-                      <span className="text-white font-semibold">{semester}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" style={{ width: '15%', minWidth: '70px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Semester</span>
+                      <span className="text-white font-semibold text-xs">{semester}</span>
                     </td>
-                    <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Branch:</span>
-                      <span className="text-white font-semibold truncate">{isBSH ? bshBranch : branch}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" style={{ width: '15%', minWidth: '70px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Branch</span>
+                      <span className="text-white font-semibold text-xs line-clamp-2">{isBSH ? bshBranch : branch}</span>
                     </td>
-                    <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Section:</span>
-                      <span className="text-white font-semibold">{section}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" style={{ width: '12%', minWidth: '60px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Section</span>
+                      <span className="text-white font-semibold text-xs">{section}</span>
                     </td>
-                    <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Responses:</span>
-                      <span className="text-white font-semibold">{item.totalResponses}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" style={{ width: '18%', minWidth: '80px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Responses</span>
+                      <span className="text-white font-semibold text-xs">{item.totalResponses}</span>
                     </td>
                   </tr>
                   {/* Second row */}
                   <tr>
-                    <td className="border border-slate-600 px-3 py-2 text-sm" colSpan={3}>
-                      <span className="text-slate-400 block text-xs">Subject:</span>
-                      <span className="text-white font-semibold line-clamp-2">{item.subjectName}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" colSpan={2} style={{ minWidth: '130px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Subject</span>
+                      <span className="text-white font-semibold text-xs line-clamp-2">{item.subjectName}</span>
                     </td>
-                    <td className="border border-slate-600 px-3 py-2 text-sm" colSpan={2}>
-                      <span className="text-slate-400 block text-xs">Teacher:</span>
-                      <span className="text-white font-semibold line-clamp-2">{item.teacherName}</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" colSpan={2} style={{ minWidth: '140px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Teacher</span>
+                      <span className="text-white font-semibold text-xs line-clamp-2">{item.teacherName}</span>
                     </td>
-                    <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Type:</span>
+                    <td className="border border-slate-600 px-2 py-2 text-sm" colSpan={2} style={{ minWidth: '140px' }}>
+                      <span className="text-slate-400 block text-xs font-semibold">Type</span>
                       <span className={`px-2 py-0.5 rounded-full text-xs font-semibold inline-block ${
                         item.type === 'Theory' 
                           ? 'bg-blue-900/50 text-white border border-blue-800' 

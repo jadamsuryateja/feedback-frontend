@@ -416,7 +416,7 @@ const FeedbackSummary = () => {
             <>
               <div>
                 <label className="block text-sm font-medium text-white mb-2">
-                  Academic Year
+                  Batch
                 </label>
                 <input
                   type="text"
@@ -510,7 +510,7 @@ const FeedbackSummary = () => {
             <>
               <div>
                 <label className="block text-sm font-medium text-white mb-2">
-                  Academic Year
+                  Batch
                 </label>
                 <input
                   type="text"
@@ -651,7 +651,7 @@ const FeedbackSummary = () => {
                   {/* First row - split into 2 rows for better spacing */}
                   <tr>
                     <td className="border border-slate-600 px-3 py-2 text-sm">
-                      <span className="text-slate-400 block text-xs">Academic Year:</span>
+                      <span className="text-slate-400 block text-xs">Batch:</span>
                       <span className="text-white font-semibold">{academicYear}</span>
                     </td>
                     <td className="border border-slate-600 px-3 py-2 text-sm">

@@ -123,99 +123,135 @@ const FeedbackSummary = () => {
         left: 0;
         top: 0;
         width: 100%;
-        padding: 0.3cm !important;
+        padding: 0.5cm !important;
       }
-      /* Reduce font sizes even more for portrait */
+      
+      /* Increase font sizes for better readability */
       .print-section h2 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+        font-weight: bold !important;
+      }
+      
+      .print-section h3 {
         font-size: 14px !important;
-        margin-bottom: 6px !important;
+        margin-top: 10px !important;
+        margin-bottom: 8px !important;
+        font-weight: bold !important;
       }
+      
       .print-section .text-sm {
-        font-size: 8px !important;
+        font-size: 11px !important;
       }
+      
       .print-section span,
       .print-section td,
       .print-section th {
-        font-size: 8px !important;
-        padding: 2px 4px !important;
+        font-size: 10px !important;
+        padding: 6px 8px !important;
+        line-height: 1.4 !important;
       }
-      /* Tighter grid for info section */
+      
+      /* Info section grid */
       .print-section .grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 4px !important;
-        margin-bottom: 6px !important;
+        gap: 8px !important;
+        margin-bottom: 10px !important;
       }
-      /* Smaller table */
+      
+      /* Table improvements */
       .print-section table {
-        font-size: 8px !important;
-        border: 1px solid #d1d5db !important;
+        font-size: 10px !important;
+        border: 2px solid #000 !important;
         width: 100% !important;
         table-layout: fixed !important;
+        margin-bottom: 12px !important;
       }
+      
       .print-section th,
       .print-section td {
-        border: 1px solid #d1d5db !important;
-        padding: 2px !important;
-        white-space: nowrap !important;
+        border: 1px solid #000 !important;
+        padding: 8px !important;
+        text-align: left !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
       }
-      /* Tighter spacing */
+      
+      .print-section th {
+        background-color: #f3f4f6 !important;
+        font-weight: bold !important;
+      }
+      
+      /* Section spacing */
       .print-section > div {
-        margin-bottom: 0.5cm !important;
-        padding: 4px !important;
+        margin-bottom: 1cm !important;
+        padding: 8px !important;
       }
-      /* Smaller badges */
+      
+      /* Badges */
       .print-section [class*='rounded-full'] {
-        padding: 1px 4px !important;
-        font-size: 7px !important;
+        padding: 3px 8px !important;
+        font-size: 9px !important;
+        border: 1px solid #000 !important;
       }
+      
       /* Portrait page setup */
       @page {
-        margin: 0.3cm !important;
+        margin: 0.5cm !important;
         size: A4 portrait;
       }
-      /* Tighter spacing */
+      
+      /* Spacing utilities */
       .print-section .mb-6 {
-        margin-bottom: 0.3rem !important;
+        margin-bottom: 0.5rem !important;
       }
+      
       .print-section .p-6 {
-        padding: 0.3rem !important;
+        padding: 0.5rem !important;
       }
+      
       .print-section .gap-4 {
-        gap: 0.2rem !important;
+        gap: 0.3rem !important;
       }
-      /* Adjusted column widths for portrait */
+      
+      /* Column widths */
       .print-section th:first-child,
       .print-section td:first-child {
-        width: 60px !important;
+        width: 70px !important;
       }
+      
       .print-section th:not(:first-child),
       .print-section td:not(:first-child) {
-        width: calc((100% - 60px) / 11) !important;
+        width: calc((100% - 70px) / 11) !important;
       }
 
-      /* Logo styles for print */
+      /* Logo and header styles */
       .print-header {
         display: block !important;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 0.5cm !important;
         visibility: visible !important;
+        page-break-inside: avoid !important;
       }
+      
       .print-header img {
-        height: 60px !important;
+        height: 80px !important;
         margin: 0 auto !important;
       }
+      
       .print-header h1 {
         font-size: 16px !important;
         font-weight: bold !important;
         color: black !important;
-        margin-top: 8px !important;
+        margin-top: 6px !important;
+        margin-bottom: 2px !important;
         text-align: center !important;
       }
 
-      /* Handle long text in print */
+      /* Long text handling */
       .print-section .truncate {
-        max-width: 150px !important;
+        max-width: 100% !important;
         white-space: normal !important;
         word-break: break-word !important;
       }
@@ -223,75 +259,58 @@ const FeedbackSummary = () => {
       .print-section .break-words {
         word-break: break-word !important;
         white-space: normal !important;
-        font-size: 8px !important;
+        font-size: 10px !important;
+        line-height: 1.5 !important;
       }
 
-      /* Comments section styles for print */
-      .print-section h3 {
-        font-size: 12px !important;
-        margin-top: 8px !important;
-        margin-bottom: 4px !important;
-      }
-
-      .print-section .space-y-2 {
-        margin-top: 4px !important;
-      }
-
-      .print-section .space-y-2 > div {
-        padding: 2px 4px !important;
-        margin-bottom: 2px !important;
-        border: 1px solid #d1d5db !important;
-        page-break-inside: avoid !important;
-      }
-
-      .print-section .space-y-2 p {
-        font-size: 8px !important;
-        line-height: 1.2 !important;
-        margin: 0 !important;
-      }
-
-      /* Comments section print styles */
+      /* Comments section */
       .comments-section {
         page-break-before: auto !important;
         page-break-inside: avoid !important;
-        margin-top: 1cm !important;
+        margin-top: 1.5cm !important;
         width: 100% !important;
-        margin: 1cm 0 !important;
       }
 
       .comments-section h3 {
-        font-size: 12px !important;
+        font-size: 14px !important;
         font-weight: bold !important;
-        margin-bottom: 0.5cm !important;
+        margin-bottom: 0.8cm !important;
         color: black !important;
+        text-align: center !important;
       }
 
       .comments-section table {
         width: 100% !important;
         border-collapse: collapse !important;
-        table-layout: fixed !important; /* Added fixed layout */
+        table-layout: fixed !important;
         page-break-inside: auto !important;
+        border: 2px solid #000 !important;
+        margin-bottom: 1cm !important;
       }
 
       .comments-section th,
       .comments-section td {
         width: 50% !important;
-        padding: 8px !important;
+        padding: 10px !important;
         vertical-align: top !important;
-        border: 1px solid #d1d5db !important;
+        border: 1px solid #000 !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
-        white-space: pre-line !important;
+        white-space: normal !important;
+        font-size: 10px !important;
+        line-height: 1.5 !important;
+      }
+      
+      .comments-section th {
+        background-color: #f3f4f6 !important;
+        font-weight: bold !important;
+        text-align: center !important;
       }
 
       .comments-section td > div.break-words {
         width: 100% !important;
         min-width: 0 !important;
         max-width: 100% !important;
-        font-size: 8px !important;
-        line-height: 1.3 !important;
-        white-space: pre-line !important;
-        word-break: break-word !important;
       }
 
       .comments-section tr {
@@ -299,12 +318,12 @@ const FeedbackSummary = () => {
       }
 
       .comments-section .text-xs {
-        font-size: 7px !important;
+        font-size: 9px !important;
         margin-top: 4px !important;
-        color: #6b7280 !important;
+        color: #000 !important;
       }
 
-      /* Force equal width columns */
+      /* Equal column widths */
       .comments-section table > thead > tr > th:first-child,
       .comments-section table > thead > tr > th:last-child,
       .comments-section table > tbody > tr > td:first-child,
@@ -313,39 +332,32 @@ const FeedbackSummary = () => {
         max-width: 50% !important;
       }
 
-      /* Prevent content overflow */
-      .comments-section td > div {
-        box-sizing: border-box !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-
-      /* Signature section styles */
+      /* Signature section */
       .signature-section {
         display: block !important;
         visibility: visible !important;
-        margin-top: 3cm !important; /* Add space before signature */
+        margin-top: 2cm !important;
         text-align: right !important;
         page-break-inside: avoid !important;
         background: transparent !important;
-        margin-right: 2cm !important;
+        margin-right: 1.5cm !important;
       }
 
       .signature-section img {
-        height: 40px !important;
+        height: 50px !important;
         width: auto !important;
-        display: block !important; /* Changed to block */
-        margin-left: auto !important; /* Center align with text */
-        margin-bottom: 4px !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-bottom: 6px !important;
       }
 
       .signature-text {
-        font-size: 10px !important;
+        font-size: 11px !important;
         font-weight: bold !important;
         color: black !important;
-        text-align: center !important; /* Center align text */
-        width: 120px !important; /* Set fixed width */
-        margin-left: auto !important; /* Align with signature */
+        text-align: center !important;
+        width: 150px !important;
+        margin-left: auto !important;
       }
     }
   `;

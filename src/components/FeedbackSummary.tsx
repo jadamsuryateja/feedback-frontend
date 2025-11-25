@@ -662,12 +662,12 @@ const FeedbackSummaryComponent = () => {
           </div>
         )}
 
-        {/* Signature Section */}
- <div className="signature-section">
+         {/* Signature Section */}
+        <div className="signature-section hidden">
           <div>
-             <img src={signature} alt="Vice Principal Signature" />
+            <img src={signature} alt="Vice Principal Signature" />
             <div className="signature-text">Signature of Vice Principal</div>
-        </div>
+          </div>
         </div>
       </div>
     </div>

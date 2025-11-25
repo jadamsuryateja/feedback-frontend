@@ -661,18 +661,6 @@ const FeedbackSummaryComponent = () => {
                 </tbody>
               </table>
             </div>
-
-            {/* Signature Section */}
-            <div className="mt-8 pt-6 border-t border-slate-600">
-              <div className="flex justify-end pr-8">
-                <div className="text-center">
-                  <img src={signature} alt="Vice Principal Signature" className="h-20 mb-2" />
-                  <div className="text-slate-200 text-sm font-semibold border-t border-slate-600 pt-2">
-                    Signature of Vice Principal
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
@@ -682,13 +670,15 @@ const FeedbackSummaryComponent = () => {
           </div>
         )}
 
-         {/* Signature Section */}
-        <div className="signature-section">
-          <div>
-            <img src={signature} alt="Vice Principal Signature" />
-            <div className="signature-text">Signature of Vice Principal</div>
+        {/* Signature Section - Shows for both Summary and Comments */}
+        {(summary.length > 0 || comments.length > 0) && (
+          <div className="signature-section">
+            <div>
+              <img src={signature} alt="Vice Principal Signature" />
+              <div className="signature-text">Signature of Vice Principal</div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -48,6 +48,11 @@ const FeedbackSummaryComponent = () => {
   const [commentsLoading, setCommentsLoading] = useState(false);
 
   const addPrintStyles = `
+    /* Hide signature in frontend, show only in print */
+    .signature-section {
+      display: none !important;
+    }
+
     @media print {
       body * {
         visibility: hidden;
@@ -158,18 +163,6 @@ const FeedbackSummaryComponent = () => {
         visibility: visible !important;
         color: black !important;
         display: flex !important;
-      }
-
-      /* Hide signature in frontend, show only in print */
-      .signature-section {
-        display: none !important;
-      }
-
-      @media print {
-        .signature-section {
-          display: flex !important;
-          visibility: visible !important;
-        }
       }
     }
   `;

@@ -119,106 +119,44 @@ const FeedbackSummaryComponent = () => {
         margin-bottom: 1cm !important;
         padding: 8px !important;
       }
-      
-      @page {
-        margin: 0.5cm !important;
-        size: A4 portrait;
-      }
-      
-      .print-header {
-        display: block !important;
-        text-align: center;
-        margin-bottom: 0.5cm !important;
-        visibility: visible !important;
-        page-break-inside: avoid !important;
-      }
-      
-      .print-header img {
-        height: 80px !important;
-        margin: 0 auto !important;
-      }
-      
-      .print-header h1 {
-        font-size: 16px !important;
-        font-weight: bold !important;
-        color: black !important;
-        margin-top: 6px !important;
-        margin-bottom: 2px !important;
-        text-align: center !important;
-      }
-
-      .comments-section {
-        page-break-before: auto !important;
-        page-break-inside: avoid !important;
-        margin-top: 1.5cm !important;
-        width: 100% !important;
-      }
-
-      .comments-section h3 {
-        font-size: 14px !important;
-        font-weight: bold !important;
-        margin-bottom: 0.8cm !important;
-        color: black !important;
-        text-align: center !important;
-      }
-
-      .comments-section table {
-        width: 100% !important;
-        border-collapse: collapse !important;
-        table-layout: fixed !important;
-        page-break-inside: auto !important;
-        border: 2px solid #000 !important;
-        margin-bottom: 1cm !important;
-      }
-
-      .comments-section th,
-      .comments-section td {
-        width: 50% !important;
-        padding: 10px !important;
-        vertical-align: top !important;
-        border: 1px solid #000 !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        white-space: normal !important;
-        font-size: 10px !important;
-        line-height: 1.5 !important;
-      }
-      
-      .comments-section th {
-        background-color: #f3f4f6 !important;
-        font-weight: bold !important;
-        text-align: center !important;
-      }
-
-      .comments-section tr {
-        page-break-inside: avoid !important;
-      }
 
       .signature-section {
-        display: block !important;
-        visibility: visible !important;
-        margin-top: 2cm !important;
-        text-align: right !important;
+        margin-top: 3cm !important;
+        padding-top: 1.5cm !important;
+        border-top: 2px solid #000 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
         page-break-inside: avoid !important;
-        background: transparent !important;
-        margin-right: 1.5cm !important;
+        padding-right: 2cm !important;
+        width: 100% !important;
+        visibility: visible !important;
       }
 
       .signature-section img {
-        height: 50px !important;
-        width: auto !important;
+        height: 70px !important;
+        margin-right: 0.5cm !important;
+        margin-bottom: 0.5cm !important;
         display: block !important;
-        margin-left: auto !important;
-        margin-bottom: 6px !important;
       }
 
       .signature-text {
-        font-size: 11px !important;
-        font-weight: bold !important;
-        color: black !important;
         text-align: center !important;
-        width: 150px !important;
-        margin-left: auto !important;
+        font-size: 12px !important;
+        font-weight: bold !important;
+        margin-top: 0.5cm !important;
+        white-space: nowrap !important;
+        border-top: 2px solid #000 !important;
+        padding-top: 0.3cm !important;
+      }
+
+      .comments-section .signature-section {
+        display: flex !important;
+        visibility: visible !important;
+      }
+
+      .print-section .signature-section {
+        visibility: visible !important;
+        color: black !important;
       }
     }
   `;
@@ -703,6 +641,18 @@ const FeedbackSummaryComponent = () => {
                 </tbody>
               </table>
             </div>
+
+            {/* Signature Section */}
+            <div className="mt-8 pt-6 border-t border-slate-600">
+              <div className="flex justify-end pr-8">
+                <div className="text-center">
+                  <img src={signature} alt="Vice Principal Signature" className="h-20 mb-2" />
+                  <div className="text-slate-200 text-sm font-semibold border-t border-slate-600 pt-2">
+                    Signature of Vice Principal
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -713,9 +663,11 @@ const FeedbackSummaryComponent = () => {
         )}
 
         {/* Signature Section */}
-        <div className="signature-section hidden">
-          <img src={signature} alt="Vice Principal Signature" />
-          <div className="signature-text">Signature of Vice Principal</div>
+ <div className="signature-section">
+          <div>
+             <img src={signature} alt="Vice Principal Signature" />
+            <div className="signature-text">Signature of Vice Principal</div>
+        </div>
         </div>
       </div>
     </div>

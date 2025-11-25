@@ -157,6 +157,19 @@ const FeedbackSummaryComponent = () => {
       .print-section .signature-section {
         visibility: visible !important;
         color: black !important;
+        display: flex !important;
+      }
+
+      /* Hide signature in frontend, show only in print */
+      .signature-section {
+        display: none !important;
+      }
+
+      @media print {
+        .signature-section {
+          display: flex !important;
+          visibility: visible !important;
+        }
       }
     }
   `;
@@ -663,7 +676,7 @@ const FeedbackSummaryComponent = () => {
         )}
 
          {/* Signature Section */}
-        <div className="signature-section hidden">
+        <div className="signature-section">
           <div>
             <img src={signature} alt="Vice Principal Signature" />
             <div className="signature-text">Signature of Vice Principal</div>

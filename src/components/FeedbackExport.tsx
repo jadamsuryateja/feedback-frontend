@@ -80,15 +80,19 @@ const FeedbackExport = () => {
     const sections = new Set(responses.map(r => r.section));
     const sectionTheoryGroups: { [section: string]: { [key: string]: number[][] } } = {};
     const sectionLabGroups: { [section: string]: { [key: string]: number[][] } } = {};
-    const comments: any[] = [];
+    const commentsBySection: { [section: string]: any[] } = {};
 
     // Process all responses
     responses.forEach((response) => {
-      // Collect comments
+      // Initialize section if not exists
+      if (!commentsBySection[response.section]) {
+        commentsBySection[response.section] = [];
+      }
+
+      // Collect comments section-wise
       if (response.collegeComments || response.departmentComments) {
-        comments.push({
+        commentsBySection[response.section].push({
           'Timestamp': new Date(response.submittedAt).toLocaleString(),
-          'Section': response.section,
           'College Comments': response.collegeComments || '',
           'Department Comments': response.departmentComments || ''
         });
@@ -125,7 +129,7 @@ const FeedbackExport = () => {
 
     // Add border style
     const borderStyle = {
-      style: 'thick', // Change from 'thin' to 'medium'
+      style: 'thick',
       color: { rgb: '000000' }
     };
 
@@ -148,7 +152,7 @@ const FeedbackExport = () => {
           }
           worksheet[cellRef].s = {
             border: fullBorder,
-            alignment: { vertical: 'center', horizontal: 'center' }
+            alignment: { vertical: 'center', horizontal: 'center', wrapText: true }
           };
         }
       }
@@ -156,20 +160,6 @@ const FeedbackExport = () => {
 
     // Apply borders to metadata sheet
     applyBordersToSheet(metadataSheet);
-
-    // Create comments sheet with borders
-    if (comments.length > 0) {
-      const commentsSheet = window.XLSX.utils.json_to_sheet(comments);
-      const commentsCols = [
-        { wch: 20 }, // Timestamp
-        { wch: 15 }, // Section
-        { wch: 40 }, // College Comments
-        { wch: 40 }  // Department Comments
-      ];
-      commentsSheet['!cols'] = commentsCols;
-      applyBordersToSheet(commentsSheet);
-      window.XLSX.utils.book_append_sheet(wb, commentsSheet, 'Comments');
-    }
 
     // Helper function to process group data with borders
     function processGroupData(groups: { [key: string]: number[][] }) {
@@ -243,10 +233,7 @@ const FeedbackExport = () => {
           ...Array(10).fill({ wch: 10 }) // Q1-Q10
         ];
         sectionTheorySheet['!cols'] = theoryCols;
-        
-        // Apply borders to theory sheet
         applyBordersToSheet(sectionTheorySheet);
-        
         window.XLSX.utils.book_append_sheet(wb, sectionTheorySheet, `${section} Theory`);
       }
 
@@ -261,11 +248,21 @@ const FeedbackExport = () => {
           ...Array(10).fill({ wch: 10 }) // Q1-Q10
         ];
         sectionLabSheet['!cols'] = labCols;
-        
-        // Apply borders to lab sheet
         applyBordersToSheet(sectionLabSheet);
-        
         window.XLSX.utils.book_append_sheet(wb, sectionLabSheet, `${section} Lab`);
+      }
+
+      // Comments sheet for each section
+      if (commentsBySection[section] && commentsBySection[section].length > 0) {
+        const commentsSheet = window.XLSX.utils.json_to_sheet(commentsBySection[section]);
+        const commentsCols = [
+          { wch: 20 }, // Timestamp
+          { wch: 50 }, // College Comments
+          { wch: 50 }  // Department Comments
+        ];
+        commentsSheet['!cols'] = commentsCols;
+        applyBordersToSheet(commentsSheet);
+        window.XLSX.utils.book_append_sheet(wb, commentsSheet, `${section} Comments`);
       }
     });
 

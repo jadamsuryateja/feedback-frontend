@@ -70,6 +70,20 @@ const FeedbackSummaryComponent = () => {
         width: 100%;
         padding: 0.5cm !important;
       }
+
+      .print-header {
+        display: block !important;
+        visibility: visible !important;
+        margin-bottom: 1cm !important;
+        text-align: center !important;
+      }
+
+      .print-header img {
+        height: 80px !important;
+        margin: 0 auto 0.5cm !important;
+        display: block !important;
+        visibility: visible !important;
+      }
       
       .print-section h2 {
         font-size: 18px !important;
